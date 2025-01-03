@@ -71,7 +71,7 @@ export default () => {
                 }}
                 className='w-full'
             >
-                <MainPageHeader title={showOnlyAdmin ? 'Other Servers' : 'Your Servers'}>
+                <MainPageHeader title={showOnlyAdmin ? 'Other Servers' : 'Deine Server'}>
                     <div className='flex gap-4'>
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
