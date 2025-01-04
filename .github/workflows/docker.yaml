@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - dev
   pull_request:
     branches:
       - main
@@ -28,7 +27,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/pyrohost/pyrodactyl
+          images: ghcr.io/lelomator/lelodactyl
           flavor: |
             latest=false
           tags: |
