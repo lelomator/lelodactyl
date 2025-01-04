@@ -50,7 +50,7 @@ export default () => {
                 <div className={`mt-6 flex items-center`}>
                     <div className={`flex-1`}>
                         <div className={`border-l-4 border-brand p-3`}>
-                            <p className={`text-xs text-zinc-200`}>Eine Lizenz kann nur ein mal Verwendet werden!</p>
+                            <p className={`text-xs text-zinc-200`}>Eine Lizenz kann nur ein mal verwendet werden!</p>
                         </div>
                     </div>
                     <div className={`ml-4`}>
