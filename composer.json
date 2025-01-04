@@ -1,13 +1,12 @@
 {
-    "name": "pyrohost/pyrodactyl",
+    "name": "lelomator/lelodactyl",
     "description": "Pyrodactyl is the Pterodactyl-based game server panel that's faster, smaller, safer, and more accessible.",
     "license": "AGPL-3.0-or-later",
     "authors": [
         {
-            "name": "Pyro Host Inc.",
-            "email": "team@pyro.host",
-            "homepage": "https://pyro.host",
-            "role": "Former Maintainer"
+            "name": "Levi Stolz",
+            "email": "levi.stolz@web.de",
+            "role": "New Maintainer"
         }
     ],
     "require": {
