@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - dev
   pull_request:
     branches:
       - main
@@ -18,7 +17,7 @@ permissions:
 jobs:
   push:
     name: Push
-    runs-on: fedora-latest
+    runs-on: ubuntu-latest
     if: "!contains(github.ref, 'develop') || (!contains(github.event.head_commit.message, 'skip docker') && !contains(github.event.head_commit.message, 'docker skip'))"
     steps:
       - name: Code checkout
@@ -28,7 +27,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/pyrohost/pyrodactyl
+          images: ghcr.io/lelomator/lelodactyl
           flavor: |
             latest=false
           tags: |
