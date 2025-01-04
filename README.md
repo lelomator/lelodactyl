@@ -1,22 +1,10 @@
 <p align="center">
-  <a href="https://panel.pyro.host">
-    <img src="https://i.imgur.com/R10ivg9.png" alt="Banner with Pyrodactyl Logo">
-  </a>
-
-</p>
-
-<p align="center">
- <a aria-label="Made by Pyro" href="https://pyro.host"><img src="https://i.imgur.com/uvIy6cI.png"></a>
- <a aria-label="Join the Pyro community on Discord" href="https://discord.gg/fxeRFRbhQh?utm_source=githubreadme&utm_medium=readme&utm_campaign=OSSLAUNCH&utm_id=OSSLAUNCH"><img alt="" src="https://i.imgur.com/qSfKisV.png"></a>
-</p>
-
-<p align="center">
   <a href="https://github.com/pyrohost/pyrodactyl/actions/workflows/docker.yaml">
     <img src="https://github.com/pyrohost/pyrodactyl/actions/workflows/docker.yaml/badge.svg" alt="Docker">
   </a>
 </p>
 
-<h1 align="center">Pyrodactyl</h1>
+<h1 align="center">Lelodactyl</h1>
 
 > [!WARNING]
 > Pyrodactyl is under development and pre-release. Some UI elements may appear broken, and there might be some bugs.
