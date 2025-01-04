@@ -10,6 +10,7 @@ import BackupContainer from '@/components/server/backups/BackupContainer';
 import ServerConsole from '@/components/server/console/ServerConsoleContainer';
 import DatabasesContainer from '@/components/server/databases/DatabasesContainer';
 import FileManagerContainer from '@/components/server/files/FileManagerContainer';
+import LicenceContainer from '@/components/server/licence/LicenceContainer';
 import NetworkContainer from '@/components/server/network/NetworkContainer';
 import ScheduleContainer from '@/components/server/schedules/ScheduleContainer';
 import SettingsContainer from '@/components/server/settings/SettingsContainer';
@@ -89,6 +90,13 @@ export default {
             name: 'Console',
             component: ServerConsole,
             end: true,
+        },
+        {
+            route: 'licence/*',
+            path: 'licence',
+            permission: null,
+            name: 'Lizenz',
+            component: LicenceContainer,
         },
         {
             route: 'files/*',

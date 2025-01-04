@@ -139,6 +139,7 @@ export default () => {
 
     // Define refs for navigation buttons.
     const NavigationHome = useRef(null);
+    const NavigationLicence = useRef(null);
     const NavigationFiles = useRef(null);
     const NavigationDatabases = useRef(null);
     const NavigationBackups = useRef(null);
@@ -155,6 +156,7 @@ export default () => {
 
         // Get currents of navigation refs.
         const ButtonHome = NavigationHome.current;
+        const ButtonLicence = NavigationLicence.current;
         const ButtonFiles = NavigationFiles.current;
         const ButtonDatabases = NavigationDatabases.current;
         const ButtonBackups = NavigationBackups.current;
@@ -172,6 +174,8 @@ export default () => {
 
         if (pathname.endsWith(`/server/${id}`) && ButtonHome != null)
             return (ButtonHome as any).offsetTop + HighlightOffset;
+        if (pathname.endsWith(`/server/${id}/licence`) && ButtonLicence != null)
+            return (ButtonLicence as any).offsetTop + HighlightOffset;
         if (pathname.endsWith(`/server/${id}/files`) && ButtonFiles != null)
             return (ButtonFiles as any).offsetTop + HighlightOffset;
         if (new RegExp(`^/server/${id}/files(/(new|edit).*)?$`).test(pathname) && ButtonFiles != null)
@@ -311,6 +315,16 @@ export default () => {
                                     <Can action={'file.*'} matchAny>
                                         <NavLink
                                             className='flex flex-row items-center'
+                                            ref={NavigationLicence}
+                                            to={`/server/${id}/licence`}
+                                        >
+                                            <HugeIconsPencil fill='currentColor' />
+                                            <p>Lizenz</p>
+                                        </NavLink>
+                                    </Can>
+                                    <Can action={'file.*'} matchAny>
+                                        <NavLink
+                                            className='flex flex-row items-center'
                                             ref={NavigationFiles}
                                             to={`/server/${id}/files`}
                                         >
@@ -394,7 +408,7 @@ export default () => {
                                             <p>Settings</p>
                                         </NavLink>
                                     </Can>
-                                    <Can action={['activity.*', 'activity.read']} matchAny>
+                                    {/*<Can action={['activity.*', 'activity.read']} matchAny>
                                         <NavLink
                                             className='flex flex-row items-center'
                                             ref={NavigationActivity}
@@ -404,7 +418,7 @@ export default () => {
                                             <HugeIconsPencil fill='currentColor' />
                                             <p>Activity</p>
                                         </NavLink>
-                                    </Can>
+                                        </Can>*/}
                                 </>
                             )}
                             <Can action={'startup.software'}>
