@@ -33,10 +33,11 @@ export default () => {
                 <ContentBox title={'Multi-Factor Authentication'}>
                     <ConfigureTwoFactorForm />
                 </ContentBox>
-                <h2 className='mt-8 font-extrabold text-2xl'>App</h2>
-                <ContentBox title={'Panel Version'}>
+                <h2 className='mt-8 font-extrabold text-2xl'>Panel Einstellungen</h2>
+                <ContentBox title={'Version'}>
                     <p className='text-sm mb-4'>
-                        This is useful to provide Pyro staff if you run into an unexpected issue.
+                        Das sind Nützliche Informationen, die du dem Lelodactyl support bereitstellen kannst, falls ein
+                        unerwartetes problem auftritt.
                     </p>
                     <div className='flex flex-col gap-4'>
                         <Code>{import.meta.env.VITE_PYRODACTYL_VERSION}</Code>

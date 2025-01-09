@@ -20,13 +20,35 @@ export default () => {
     const node = ServerContext.useStoreState((state) => state.server.data!.node);
     const sftp = ServerContext.useStoreState((state) => state.server.data!.sftpDetails, isEqual);
 
+    const [valid, setValid] = useState(false);
+    const [loading, setLoading] = useState(true);
     const [visible, setVisible] = useState<'true' | null>(null);
 
-    //useEffect(() => {
-    //    return () => {
-    //        clearAndAddHttpError();
-    //    };
-    //}, [visible]);
+    useEffect(() => {
+        // Server-Anfrage zur Überprüfung der Lizenz
+        const fetchLicenceValidity = async () => {
+            try {
+                const response = await fetch(`http://localhost:3002/licences/${id}`);
+                const data = await response.json();
+                if (response.ok && data.success) {
+                    setValid(data.data);
+                } else {
+                    setValid(false);
+                }
+            } catch (error) {
+                console.error('Fehler bei der Anfrage:', error);
+                setValid(false);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchLicenceValidity();
+    }, [id]);
+
+    if (loading) {
+        return <div>Wird geladen...</div>;
+    }
 
     return (
         <ServerContentBlock title={'Lizenz'}>
@@ -43,9 +65,13 @@ export default () => {
                 </div>
                 <div className={`mt-2 flex items-center justify-between text-sm`}>
                     <Label>Gültigkeit</Label>
-                    <CopyOnClick text={`${username}.${id}`}>
-                        <code className={`font-mono bg-zinc-900 rounded py-1 px-2`}>{`${username}.${id}`}</code>
-                    </CopyOnClick>
+                    <span>
+                        {valid ? (
+                            <code className={`font-mono bg-zinc-900 rounded py-1 px-2 text-green-500`}>{`Gültig`}</code>
+                        ) : (
+                            <code className={`font-mono bg-zinc-900 rounded py-1 px-2 text-red-500`}>{`Ungültig`}</code>
+                        )}
+                    </span>
                 </div>
                 <div className={`mt-6 flex items-center`}>
                     <div className={`flex-1`}>
@@ -54,9 +80,11 @@ export default () => {
                         </div>
                     </div>
                     <div className={`ml-4`}>
-                        <a href={`#`}>
-                            <Button onClick={() => setVisible('true')}>Lizenz Erneuern</Button>
-                        </a>
+                        {!valid && (
+                            <a href={`#`}>
+                                <Button onClick={() => setVisible('true')}>Lizenz Erneuern</Button>
+                            </a>
+                        )}
                     </div>
                 </div>
             </TitledGreyBox>
