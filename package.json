@@ -1,6 +1,6 @@
 {
     "name": "lelodactyl",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "buildNumber": "300000",
     "engines": {
         "node": ">=20.0"
