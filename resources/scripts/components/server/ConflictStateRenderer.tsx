@@ -22,7 +22,10 @@ export default () => {
             </div>
         </div>
     ) : status === 'suspended' ? (
-        <ScreenBlock title={'Server Suspended'} message={'This server is suspended and cannot be accessed.'} />
+        <ScreenBlock
+            title={'Server Inaktiv'}
+            message={'Dieser Server wurde entweder Suspendiert, oder deine Lizenz ist abgelaufen!'}
+        />
     ) : isNodeUnderMaintenance ? (
         <ScreenBlock
             title={'Node under Maintenance'}

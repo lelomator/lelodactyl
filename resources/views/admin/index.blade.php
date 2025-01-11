@@ -21,7 +21,11 @@
                 <h3 class="box-title">System Information</h3>
             </div>
             <div class="box-body">
-                    You are running Pyrodactyl panel version <code>{{ config('app.version') }}</code>.
+                    You are running Lelodactyl panel version <code>{{ config('app.version') }}</code>.
+            </div>
+            <div class="box-body">
+                    Lelodactyl is a Pyrodactyl Fork, you can find the Original Project here:
+                    <a href="https://github.com/pyrohost/pyrodactyl">Pyrodactyl</a>
             </div>
         </div>
     </div>

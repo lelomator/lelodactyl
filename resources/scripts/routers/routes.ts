@@ -97,6 +97,7 @@ export default {
             permission: null,
             name: 'Lizenz',
             component: LicenceContainer,
+            end: true,
         },
         {
             route: 'files/*',

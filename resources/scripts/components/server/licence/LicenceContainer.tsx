@@ -20,7 +20,7 @@ export default () => {
     const node = ServerContext.useStoreState((state) => state.server.data!.node);
     const sftp = ServerContext.useStoreState((state) => state.server.data!.sftpDetails, isEqual);
 
-    const [valid, setValid] = useState(false);
+    const [valid, setValid] = useState('null');
     const [loading, setLoading] = useState(true);
     const [visible, setVisible] = useState<'true' | null>(null);
 
@@ -31,13 +31,13 @@ export default () => {
                 const response = await fetch(`http://localhost:3002/licences/${id}`);
                 const data = await response.json();
                 if (response.ok && data.success) {
-                    setValid(data.data);
+                    setValid(data.data.toString());
                 } else {
-                    setValid(false);
+                    setValid('null');
                 }
             } catch (error) {
                 console.error('Fehler bei der Anfrage:', error);
-                setValid(false);
+                setValid('null');
             } finally {
                 setLoading(false);
             }
@@ -47,7 +47,23 @@ export default () => {
     }, [id]);
 
     if (loading) {
-        return <div>Wird geladen...</div>;
+        return (
+            <ServerContentBlock title={'Laden...'}>
+                <MainPageHeader title={'Laden...'} />
+                <h1 style={{ marginBottom: '10px' }}>Lizenzinformationen werden geladen...</h1>
+            </ServerContentBlock>
+        );
+    }
+
+    if (valid == 'null') {
+        return (
+            <ServerContentBlock title={'Fehler'}>
+                <MainPageHeader title={'Fehler'} />
+                <h1 style={{ marginBottom: '10px' }}>
+                    Wir konnten gerade keine Verbindung mit dem Server herstelln. Versuche es Später erneut.
+                </h1>
+            </ServerContentBlock>
+        );
     }
 
     return (
@@ -66,11 +82,12 @@ export default () => {
                 <div className={`mt-2 flex items-center justify-between text-sm`}>
                     <Label>Gültigkeit</Label>
                     <span>
-                        {valid ? (
+                        {valid == 'true' ? (
                             <code className={`font-mono bg-zinc-900 rounded py-1 px-2 text-green-500`}>{`Gültig`}</code>
-                        ) : (
+                        ) : null}
+                        {valid == 'false' ? (
                             <code className={`font-mono bg-zinc-900 rounded py-1 px-2 text-red-500`}>{`Ungültig`}</code>
-                        )}
+                        ) : null}
                     </span>
                 </div>
                 <div className={`mt-6 flex items-center`}>
@@ -80,8 +97,8 @@ export default () => {
                         </div>
                     </div>
                     <div className={`ml-4`}>
-                        {!valid && (
-                            <a href={`#`}>
+                        {valid == 'false' && (
+                            <a>
                                 <Button onClick={() => setVisible('true')}>Lizenz Erneuern</Button>
                             </a>
                         )}
