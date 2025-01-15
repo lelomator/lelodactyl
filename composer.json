@@ -1,6 +1,6 @@
 {
     "name": "lelomator/lelodactyl",
-    "description": "Pyrodactyl is the Pterodactyl-based game server panel that's faster, smaller, safer, and more accessible.",
+    "description": "Lelodactyl is the Pyrodactyl-Pterodactyl-based game server panel.",
     "license": "AGPL-3.0-or-later",
     "authors": [
         {

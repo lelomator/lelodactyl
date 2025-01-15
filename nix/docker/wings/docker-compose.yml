@@ -8,7 +8,7 @@ services:
       - TZ=America/Los_Angeles
       - WINGS_UID=1001
       - WINGS_GID=1001
-      - WINGS_USERNAME=pyrodactyl
+      - WINGS_USERNAME=lelodactyl
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/var/lib/docker/containers:/var/lib/docker/containers"

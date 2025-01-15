@@ -74,7 +74,7 @@ export default defineConfig({
                         '@swc/plugin-styled-components',
                         {
                             pure: true,
-                            namespace: 'pyrodactyl',
+                            namespace: 'lelodactyl',
                         },
                     ],
                 ],
