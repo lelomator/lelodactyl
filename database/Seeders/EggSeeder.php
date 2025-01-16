@@ -23,7 +23,8 @@ class EggSeeder extends Seeder
         'Source Engine',
         'Voice Servers',
         'Rust',
-        'consumer_minecraft'
+        'consumer_minecraft_java',
+        'consumer_minecraft_bedrock'
     ];
 
     /**

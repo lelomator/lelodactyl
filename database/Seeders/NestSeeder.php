@@ -41,7 +41,8 @@ class NestSeeder extends Seeder
         ])->keyBy('name')->toArray();
 
         $this->createMinecraftNest(array_get($items, 'Minecraft'));
-        $this->createMinecraftConsumerNest(array_get($items, 'consumer_minecraft'));
+        $this->createMinecraftConsumerJavaNest(array_get($items, 'consumer_minecraft_java'));
+        $this->createMinecraftConsumerBedrockNest(array_get($items, 'consumer_minecraft_bedrock'));
         $this->createSourceEngineNest(array_get($items, 'Source Engine'));
         $this->createVoiceServersNest(array_get($items, 'Voice Servers'));
         $this->createRustNest(array_get($items, 'Rust'));
@@ -67,11 +68,26 @@ class NestSeeder extends Seeder
      *
      * @throws \Pterodactyl\Exceptions\Model\DataValidationException
      */
-    private function createMinecraftConsumerNest(?array $nest = null)
+    private function createMinecraftConsumerJavaNest(?array $nest = null)
     {
         if (is_null($nest)) {
             $this->creationService->handle([
-                'name' => 'consumer_minecraft',
+                'name' => 'consumer_minecraft_java',
+                'description' => 'Minecraft - the classic game from Mojang. With support for Vanilla MC, Spigot, and many others!',
+            ], 'support@pterodactyl.io');
+        }
+    }
+
+            /**
+     * Create the Minecraft nest to be used later on.
+     *
+     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
+     */
+    private function createMinecraftConsumerBedrockNest(?array $nest = null)
+    {
+        if (is_null($nest)) {
+            $this->creationService->handle([
+                'name' => 'consumer_minecraft_bedrock',
                 'description' => 'Minecraft - the classic game from Mojang. With support for Vanilla MC, Spigot, and many others!',
             ], 'support@pterodactyl.io');
         }
