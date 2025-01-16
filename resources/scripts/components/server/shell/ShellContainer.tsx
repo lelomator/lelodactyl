@@ -59,7 +59,7 @@ const MAX_DESCRIPTION_LENGTH = 100;
 const steps = [
     {
         slug: 'game',
-        title: 'Game',
+        title: 'Spiel',
     },
     {
         slug: 'software',
@@ -67,7 +67,7 @@ const steps = [
     },
     {
         slug: 'options-variables',
-        title: 'Options & Variables',
+        title: 'Optionen',
     },
 ];
 const hidden_nest_prefix = '!';
@@ -199,7 +199,12 @@ const SoftwareContainer = () => {
         return;
     };
 
-    const handleNestSelect = (nest: Nest) => {
+    const getNestByName = (name: string): Nest | undefined => {
+        return nests?.find((nest) => nest.attributes.name === name);
+    };
+
+    const handleNestSelect = (nest_name: string) => {
+        const nest: Nest = getNestByName(nest_name)!;
         setSelectedNest(nest);
         setSelectedEgg(null);
         setStep(1);
@@ -296,8 +301,8 @@ const SoftwareContainer = () => {
         <ServerContentBlock title='Software'>
             <MainPageHeader direction='column' title='Software'>
                 <h2 className='text-sm'>
-                    Welcome to the software management page. Here you can change the game or software that is running on
-                    your server.
+                    Das ist deine Software-Management Seite, hier kannst du einstellen, welcher Software auf deinem
+                    Server läuft!
                 </h2>
             </MainPageHeader>
 
@@ -319,7 +324,7 @@ const SoftwareContainer = () => {
                             <div className='flex items-center gap-2'>
                                 <HugeIconsEggs fill='currentColor' />
                                 <div className='flex flex-col'>
-                                    <h1 className='text-2xl'>Current Egg</h1>
+                                    <h1 className='text-2xl'>Aktuelle Software:</h1>
                                     {currentEggName &&
                                         (currentEggName?.includes(blank_egg_prefix) ? (
                                             <p className='text-neutral-300 text-sm'>Please select a egg</p>
@@ -332,7 +337,7 @@ const SoftwareContainer = () => {
                                 className='rounded-full border-[1px] border-[#ffffff12] px-4 py-2 text-sm font-bold shadow-md hover:border-[#ffffff22] hover:shadow-lg bg-gradient-to-b from-[#ffffff10] to-[#ffffff09] text-white'
                                 onClick={() => setVisible(true)}
                             >
-                                Change Egg
+                                Software Ändern
                             </button>
                         </div>
                     </div>
@@ -379,7 +384,7 @@ const SoftwareContainer = () => {
                             {step == 0 && (
                                 <div>
                                     <div className='grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4'>
-                                        {nests?.map((nest) =>
+                                        {/*{nests?.map((nest) =>
                                             nest.attributes.name.includes(hidden_nest_prefix) ? null : (
                                                 <div
                                                     key={nest.attributes.uuid}
@@ -400,7 +405,33 @@ const SoftwareContainer = () => {
                                                     </p>
                                                 </div>
                                             ),
-                                        )}
+                                        )} */}
+
+                                        <div
+                                            className={`cursor-pointer bg-[#3333332a] border-[1px] p-4 rounded-lg w-full text-left border-[#55555540]
+                                            }`}
+                                        >
+                                            <div className='flex items-center justify-between'>
+                                                <p className='text-neutral-200 text-md'>Minecraft</p>
+                                                <Button onClick={() => handleNestSelect('Minecraft')}>Select</Button>
+                                            </div>
+                                            <p className='text-neutral-400 text-xs mt-2'>
+                                                Minecraft - Das meistverkaufte Videospiel der Welt!
+                                            </p>
+                                        </div>
+
+                                        <div
+                                            className={`cursor-pointer bg-[#3333332a] border-[1px] p-4 rounded-lg w-full text-left border-[#55555540]
+                                            }`}
+                                        >
+                                            <div className='flex items-center justify-between'>
+                                                <p className='text-neutral-200 text-md'>Rust</p>
+                                                <Button onClick={() => handleNestSelect('Rust')}>Select</Button>
+                                            </div>
+                                            <p className='text-neutral-400 text-xs mt-2'>
+                                                Minecraft - Das meistverkaufte Videospiel der Welt!
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             )}
@@ -566,10 +597,10 @@ const SoftwareContainer = () => {
                             className='w-[40px] h-[40px] m-2 mr-0 text-brand hidden md:block'
                         />
                         <div className='flex flex-col pb-1  m-2'>
-                            <h1 className='text-xl'>Danger Zone</h1>
+                            <h1 className='text-xl'>Achtung</h1>
                             <p className='text-sm text-neutral-300'>
-                                During this process some files may be deleted or modified either make a backup before
-                                hand or pick the option when prompted.
+                                Während diesem Prozess, könnten Dateien kaputt gehen, wenn du diesen Server nicht zum
+                                ersten mal Instalierst solltest du ein Backup machen
                             </p>
                         </div>
                     </div>
