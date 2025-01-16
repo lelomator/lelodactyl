@@ -5,7 +5,7 @@ x-common:
         MYSQL_PASSWORD: &db-password 'CHANGE_ME'
         MYSQL_ROOT_PASSWORD: 'CHANGE_ME_TOO'
     panel: &panel-environment
-        APP_URL: 'http://example.com'
+        APP_URL: 'http://panel.levi-stolz.de'
         # A list of valid timezones can be found here: http://php.net/manual/en/timezones.php
         APP_TIMEZONE: 'UTC'
         APP_SERVICE_AUTHOR: 'noreply@example.com'
