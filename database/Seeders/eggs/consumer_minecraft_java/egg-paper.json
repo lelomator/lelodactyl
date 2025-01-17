@@ -38,7 +38,7 @@
     "variables": [
         {
             "name": "Minecraft Version",
-            "description": "The version of minecraft to download. \r\n\r\nLeave at latest to always get the latest version. Invalid versions will default to latest.",
+            "description": "Die Minecraft version, die verwendet werden soll. \r\n\r\nLass es auf 'latest' um immer die neuste version zu verwenden. Ungültige versionen führen immer zu 'latest'.",
             "env_variable": "MINECRAFT_VERSION",
             "default_value": "latest",
             "user_viewable": true,
@@ -47,8 +47,8 @@
             "field_type": "text"
         },
         {
-            "name": "Server Jar File",
-            "description": "The name of the server jarfile to run the server with.",
+            "name": "Server Jar Datei",
+            "description": "Der name der .jar Datei mit dem der Server läuft. Lass dies am besten auf Standart, wenn du dich damit nicht auskennst.",
             "env_variable": "SERVER_JARFILE",
             "default_value": "server.jar",
             "user_viewable": true,
@@ -57,8 +57,8 @@
             "field_type": "text"
         },
         {
-            "name": "Download Path",
-            "description": "A URL to use to download a server.jar rather than the ones in the install script. This is not user viewable.",
+            "name": "Download URL",
+            "description": "Eine URL, die verwendet wird, um eine server.jar herunterzuladen, anstelle derjenigen im Installationsskript.",
             "env_variable": "DL_PATH",
             "default_value": "",
             "user_viewable": false,
@@ -67,8 +67,8 @@
             "field_type": "text"
         },
         {
-            "name": "Build Number",
-            "description": "The build number for the paper release.\r\n\r\nLeave at latest to always get the latest version. Invalid versions will default to latest.",
+            "name": "Build Nummer",
+            "description": "Die Build-Nummer für die Paper-Veröffentlichung.\r\n\r\nLass 'latest', um immer die neueste Version zu erhalten. Ungültige Versionen werden standardmäßig auf 'latest' gesetzt.",
             "env_variable": "BUILD_NUMBER",
             "default_value": "latest",
             "user_viewable": true,

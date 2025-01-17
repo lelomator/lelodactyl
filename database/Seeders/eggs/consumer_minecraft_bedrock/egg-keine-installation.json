@@ -1,0 +1,31 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2025-01-17T16:02:48+00:00",
+    "name": "Keine Installation",
+    "author": "dev@pyro.host",
+    "description": "Die Standart Software - Macht Garnix!",
+    "features": [],
+    "docker_images": {
+        "Java 21": "ghcr.io\/pterodactyl\/yolks:java_21"
+    },
+    "file_denylist": [],
+    "startup": "echo -e \"\\e[1m\\e[31mDein Server hat keine Software Installiert, um das zu tun gehe zum \\\"Software\\\" reiter deines Servers\\e[0m\"",
+    "config": {
+        "files": "{}",
+        "startup": "{}",
+        "logs": "{}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": null,
+            "container": "alpine:3.4",
+            "entrypoint": "ash"
+        }
+    },
+    "variables": []
+}

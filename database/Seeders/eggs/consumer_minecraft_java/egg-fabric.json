@@ -38,7 +38,7 @@
     "variables": [
         {
             "name": "Minecraft Version",
-            "description": "The version of Minecraft to download. \r\n\r\nLeave at latest to always get the latest version. Invalid versions will default to latest.",
+            "description": "Die Minecraft version, die verwendet werden soll. \r\n\r\nLass es auf 'latest' um immer die neuste version zu verwenden. Ungültige versionen führen immer zu 'latest'.",
             "env_variable": "MINECRAFT_VERSION",
             "default_value": "latest",
             "user_viewable": true,
@@ -47,8 +47,8 @@
             "field_type": "text"
         },
         {
-            "name": "Server Jar File",
-            "description": "The name of the .jar file to run the server with.",
+            "name": "Server Jar Datei",
+            "description": "Der name der .jar Datei mit dem der Server läuft. Lass dies am besten auf Standart, wenn du dich damit nicht auskennst.",
             "env_variable": "SERVER_JARFILE",
             "default_value": "server.jar",
             "user_viewable": true,
@@ -58,7 +58,7 @@
         },
         {
             "name": "Fabric Version",
-            "description": "The version of FabricMC to use",
+            "description": "Die version von FabricMC, die verwendet werden soll.",
             "env_variable": "FABRIC_VERSION",
             "default_value": "latest",
             "user_viewable": true,
@@ -68,7 +68,7 @@
         },
         {
             "name": "Fabric Installer Version",
-            "description": "The version of the Fabric Installer to use",
+            "description": "Die version des Fabric Installer, die verwendet werden soll.",
             "env_variable": "FABRIC_INSTALLER_VERSION",
             "default_value": "latest",
             "user_viewable": true,

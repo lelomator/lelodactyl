@@ -37,8 +37,8 @@
     },
     "variables": [
         {
-            "name": "Server Jar File",
-            "description": "The name of the Jarfile to use when running Forge version below 1.17.",
+            "name": "Server Jar File Datei",
+            "description": "Der name der .jar Datei mit dem der Server läuft. Lass dies am besten auf Standart, wenn du dich damit nicht auskennst.",
             "env_variable": "SERVER_JARFILE",
             "default_value": "server.jar",
             "user_viewable": true,
@@ -48,7 +48,7 @@
         },
         {
             "name": "Minecraft Version",
-            "description": "The version of minecraft you want to install for.\r\n\r\nLeaving latest will install the latest recommended version.",
+            "description": "Die Minecraft version, die verwendet werden soll. \r\n\r\nLass es auf 'latest' um immer die neuste version zu verwenden. Ungültige versionen führen immer zu 'latest'.",
             "env_variable": "MC_VERSION",
             "default_value": "latest",
             "user_viewable": true,
@@ -57,8 +57,8 @@
             "field_type": "text"
         },
         {
-            "name": "Build Type",
-            "description": "The type of server jar to download from forge.\r\n\r\nValid types are \"recommended\" and \"latest\".",
+            "name": "Build Typ",
+            "description": "Der Typ der Server .jar die von Forge heruntergeladen werden.\r\n\r\nValide typen sind \"recommended\" und \"latest\".",
             "env_variable": "BUILD_TYPE",
             "default_value": "recommended",
             "user_viewable": true,
@@ -68,7 +68,7 @@
         },
         {
             "name": "Forge Version",
-            "description": "The full exact version.\r\n\r\nEx. 1.15.2-31.2.4\r\n\r\nOverrides MC_VERSION and BUILD_TYPE. If it fails to download the server files it will fail to install.",
+            "description": "Die vollständige exakte Version.\r\n\r\nBeispiel: 1.15.2-31.2.4\r\n\r\nÜberschreibt MC_VERSION und BUILD_TYPE. Wenn das Herunterladen der Server-Dateien fehlschlägt, wird die Installation ebenfalls fehlschlagen.",
             "env_variable": "FORGE_VERSION",
             "default_value": "",
             "user_viewable": true,

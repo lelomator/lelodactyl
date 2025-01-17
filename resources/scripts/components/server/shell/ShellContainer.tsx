@@ -280,7 +280,7 @@ const SoftwareContainer = () => {
                     <>
                         {`${description.slice(0, MAX_DESCRIPTION_LENGTH)}... `}
                         <button className='text-brand' onClick={() => toggleDescriptionVisibility(index)}>
-                            Show More
+                            Mehr Zeigen
                         </button>
                     </>
                 ) : (
@@ -288,7 +288,7 @@ const SoftwareContainer = () => {
                         {description}
                         {isLongDescription && (
                             <button className='text-brand' onClick={() => toggleDescriptionVisibility(index)}>
-                                <span className='text-neutral-400'>..</span>Show Less
+                                <span className='text-neutral-400'>..</span>Weniger Zeigen
                             </button>
                         )}
                     </>
@@ -308,13 +308,13 @@ const SoftwareContainer = () => {
 
             <Dialog.Confirm
                 open={modalVisible}
-                title={'Confirm server reinstallation'}
-                confirm={'Yes, reinstall server'}
+                title={'Bestätige Server Neuinstallation'}
+                confirm={'Weiter'}
                 onClose={() => setModalVisible(false)}
                 onConfirmed={() => handleEggSelect()}
             >
-                Your server will be stopped and some files may be deleted or modified during this process, are you sure
-                you wish to continue?
+                Dein Server wird gestoppt, und einige Dateien könnten geändert oder gelöscht werden. Bist du sicher,
+                dass du fortfahren möchtest?
             </Dialog.Confirm>
 
             {!visible && (
@@ -327,7 +327,7 @@ const SoftwareContainer = () => {
                                     <h1 className='text-2xl'>Aktuelle Software:</h1>
                                     {currentEggName &&
                                         (currentEggName?.includes(blank_egg_prefix) ? (
-                                            <p className='text-neutral-300 text-sm'>Please select a egg</p>
+                                            <p className='text-neutral-300 text-sm'>Wähle erst eine Software aus</p>
                                         ) : (
                                             <p className='text-neutral-300 text-sm'>{currentEggName}</p>
                                         ))}
@@ -412,11 +412,13 @@ const SoftwareContainer = () => {
                                             }`}
                                         >
                                             <div className='flex items-center justify-between'>
-                                                <p className='text-neutral-200 text-md'>Minecraft</p>
-                                                <Button onClick={() => handleNestSelect('Minecraft')}>Select</Button>
+                                                <p className='text-neutral-200 text-md'>Minecraft Java</p>
+                                                <Button onClick={() => handleNestSelect('consumer_minecraft_java')}>
+                                                    Select
+                                                </Button>
                                             </div>
                                             <p className='text-neutral-400 text-xs mt-2'>
-                                                Minecraft - Das meistverkaufte Videospiel der Welt!
+                                                Minecraft Java - Das meistverkaufte Videospiel der Welt!
                                             </p>
                                         </div>
 
@@ -425,11 +427,13 @@ const SoftwareContainer = () => {
                                             }`}
                                         >
                                             <div className='flex items-center justify-between'>
-                                                <p className='text-neutral-200 text-md'>Rust</p>
-                                                <Button onClick={() => handleNestSelect('Rust')}>Select</Button>
+                                                <p className='text-neutral-200 text-md'>Minecraft Bedrock</p>
+                                                <Button onClick={() => handleNestSelect('consumer_minecraft_bedrock')}>
+                                                    Select
+                                                </Button>
                                             </div>
                                             <p className='text-neutral-400 text-xs mt-2'>
-                                                Minecraft - Das meistverkaufte Videospiel der Welt!
+                                                Minecraft Bedrock - Das meistverkaufte Videospiel der Welt!
                                             </p>
                                         </div>
                                     </div>
@@ -473,7 +477,7 @@ const SoftwareContainer = () => {
                             )) ||
                                 (step == 1 && (
                                     <div className='flex items-center justify-center h-[63svh]'>
-                                        <p className='text-neutral-300 '>Please select a game first</p>
+                                        <p className='text-neutral-300 '>Bitte wähle erst eine Software aus.</p>
                                     </div>
                                 ))}
 
@@ -494,8 +498,9 @@ const SoftwareContainer = () => {
                                                             htmlFor='backup'
                                                             className='text-neutral-500 text-sm font-semibold'
                                                         >
-                                                            Would you like to create a backup before continuing? Some
-                                                            data may be modified for removed during the process.
+                                                            Möchtest du bevor du weitermachst einen ein Backup deines
+                                                            Servers erstellen? Beim Reistalationsprozess könnten daten
+                                                            verloren gehen.
                                                         </label>
                                                     </div>
                                                     <Switch
@@ -517,9 +522,10 @@ const SoftwareContainer = () => {
                                                             htmlFor='backup'
                                                             className='text-neutral-500 text-sm font-semibold'
                                                         >
-                                                            You have reached the backup limit for this server. If you
-                                                            wish to create a backup cancel now and delete one or more
-                                                            existing backups
+                                                            Du hast das Backuplimit deines Servers erreicht. Wenn du
+                                                            bevor du die Neuinstallation startest ein Backup erstellen
+                                                            möchtest, breche den Prozess jetzt ab und lösche ein altes
+                                                            ungebrauchtes Backup.
                                                         </label>
                                                     </div>
                                                     <Switch name='backup' disabled />
@@ -529,14 +535,14 @@ const SoftwareContainer = () => {
                                         <div className='flex items-center justify-between gap-2 bg-[#3333332a] border-[1px] border-[#ffffff0e] p-4 rounded-lg'>
                                             <div className='flex flex-col'>
                                                 <label htmlFor='wipe' className='text-neutral-300 text-md font-bold'>
-                                                    Wipe Data
+                                                    Alle Dateien Löschen
                                                 </label>
                                                 <label
                                                     htmlFor='wipe'
                                                     className='text-neutral-500 text-sm font-semibold'
                                                 >
-                                                    In some cases you might want to completely wipe your server like if
-                                                    you are changing to a different game.
+                                                    In manchen fällen möchtest du alle dateien deines Servers löschen,
+                                                    sodass diese von der neuen Serverdatei erstezt werden können.
                                                 </label>
                                             </div>
                                             <Switch
@@ -576,12 +582,12 @@ const SoftwareContainer = () => {
 
                                     <div className='border-t border-[#ffffff20]' />
 
-                                    <Button onClick={() => confirmSelection()}>Confirm</Button>
+                                    <Button onClick={() => confirmSelection()}>Bestätigen</Button>
                                 </div>
                             )) ||
                                 (step == 2 && !currentEggName?.includes(blank_egg_prefix) && (
                                     <div className='flex items-center justify-center h-[63svh]'>
-                                        <p className='text-neutral-300 '>Please select a egg first</p>
+                                        <p className='text-neutral-300 '>Bitte wähle erst eine Software aus.</p>
                                     </div>
                                 ))}
                         </div>
