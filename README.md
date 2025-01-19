@@ -1,10 +1,10 @@
+<h1 align="center">Lelodactyl</h1>
+
 <p align="center">
   <a href="https://github.com/pyrohost/pyrodactyl/actions/workflows/docker.yaml">
     <img src="https://github.com/pyrohost/pyrodactyl/actions/workflows/docker.yaml/badge.svg" alt="Docker">
   </a>
 </p>
-
-<h1 align="center">Lelodactyl</h1>
 
 > [!WARNING]
 > Pyrodactyl is under development and pre-release. Some UI elements may appear broken, and there might be some bugs.
