@@ -4,6 +4,7 @@ import { lazy } from 'react';
 import AccountApiContainer from '@/components/dashboard/AccountApiContainer';
 import AccountOverviewContainer from '@/components/dashboard/AccountOverviewContainer';
 import ActivityLogContainer from '@/components/dashboard/activity/ActivityLogContainer';
+import CreateServer from '@/components/dashboard/create/CreateServer';
 import AccountSSHContainer from '@/components/dashboard/ssh/AccountSSHContainer';
 import ServerActivityLogContainer from '@/components/server/ServerActivityLogContainer';
 import BackupContainer from '@/components/server/backups/BackupContainer';
@@ -74,6 +75,12 @@ export default {
             path: 'ssh',
             name: 'SSH Keys',
             component: AccountSSHContainer,
+        },
+        {
+            route: 'create',
+            path: 'create',
+            name: 'Erstelle einen Server',
+            component: CreateServer,
         },
         {
             route: 'activity',

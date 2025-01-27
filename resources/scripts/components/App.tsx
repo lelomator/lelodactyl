@@ -30,7 +30,6 @@ interface ExtendedWindow extends Window {
         uuid: string;
         username: string;
         email: string;
-
         root_admin: boolean;
         use_totp: boolean;
         language: string;

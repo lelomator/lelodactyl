@@ -179,7 +179,7 @@ const SoftwareContainer = () => {
     const reinstall = () => {
         reinstallServer(uuid)
             .then(() => {
-                toast.success('Server has been reinstalled successfully.');
+                toast.success('Server wird reinstalliert.');
             })
             .catch((error) => {
                 console.error(error);

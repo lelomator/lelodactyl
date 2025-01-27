@@ -107,7 +107,7 @@ export default () => {
                                 </button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className='flex flex-col gap-1 z-[99999]' sideOffset={8}>
-                                <div className='text-xs opacity-50 text-center'>More filters coming soon!</div>
+                                <div className='text-xs opacity-50 text-center'>Mehr Filter kommen bald.</div>
                                 {rootAdmin && (
                                     <DropdownMenuItem
                                         onSelect={() => {

@@ -9,7 +9,7 @@ import { MainPageHeader } from '@/components/elements/MainPageHeader';
 import ServerContentBlock from '@/components/elements/ServerContentBlock';
 import TitledGreyBox from '@/components/elements/TitledGreyBox';
 import { Button } from '@/components/elements/button/index';
-import DisableTOTPDialog from '@/components/server/licence/RenewLicenceDialog';
+import RenewLicenceDialog from '@/components/server/licence/RenewLicenceDialog';
 
 import { ServerContext } from '@/state/server';
 
@@ -20,31 +20,35 @@ export default () => {
     const node = ServerContext.useStoreState((state) => state.server.data!.node);
     const sftp = ServerContext.useStoreState((state) => state.server.data!.sftpDetails, isEqual);
 
-    const [valid, setValid] = useState('null');
+    /**/
+    const [expired, setExpired] = useState('null');
     const [loading, setLoading] = useState(true);
     const [visible, setVisible] = useState<'true' | null>(null);
 
-    useEffect(() => {
-        // Server-Anfrage zur Überprüfung der Lizenz
-        const fetchLicenceValidity = async () => {
-            try {
-                const response = await fetch(`http://localhost:3002/licences/${id}`);
-                const data = await response.json();
-                if (response.ok && data.success) {
-                    setValid(data.data.toString());
-                } else {
-                    setValid('null');
-                }
-            } catch (error) {
-                console.error('Fehler bei der Anfrage:', error);
-                setValid('null');
-            } finally {
-                setLoading(false);
+    const fetchLicenceValidity = async () => {
+        try {
+            const response = await fetch(`http://localhost:3002/api/licences/${id}`);
+            const data = await response.json();
+            if (response.ok && data.success) {
+                setExpired(data.data.toString());
+            } else {
+                setExpired('null');
             }
-        };
+        } catch (error) {
+            console.error('Fehler bei der Anfrage:', error);
+            setExpired('null');
+        } finally {
+            setLoading(false);
+        }
+    };
 
+    useEffect(() => {
         fetchLicenceValidity();
     }, [id]);
+
+    const handleLicenceRenewed = () => {
+        fetchLicenceValidity();
+    };
 
     if (loading) {
         return (
@@ -55,7 +59,7 @@ export default () => {
         );
     }
 
-    if (valid == 'null') {
+    if (expired == 'null') {
         return (
             <ServerContentBlock title={'Fehler'}>
                 <MainPageHeader title={'Fehler'} />
@@ -70,7 +74,11 @@ export default () => {
         <ServerContentBlock title={'Lizenz'}>
             <FlashMessageRender byKey={'licence'} />
             <MainPageHeader title={'Lizenz'} />
-            <DisableTOTPDialog open={visible === 'true'} onClose={() => setVisible(null)} />
+            <RenewLicenceDialog
+                open={visible === 'true'}
+                onClose={() => setVisible(null)}
+                onLicenceRenewed={handleLicenceRenewed}
+            />
             <h1 style={{ marginBottom: '10px' }}>Hier kannst du deine Server-Lizenz Verwalten und Erneuern!</h1>
             <TitledGreyBox title={'Lizenz Details'} className={`mb-6 md:mb-10`}>
                 <div className={`flex items-center justify-between text-sm`}>
@@ -82,10 +90,10 @@ export default () => {
                 <div className={`mt-2 flex items-center justify-between text-sm`}>
                     <Label>Gültigkeit</Label>
                     <span>
-                        {valid == 'true' ? (
+                        {expired == 'false' ? (
                             <code className={`font-mono bg-zinc-900 rounded py-1 px-2 text-green-500`}>{`Gültig`}</code>
                         ) : null}
-                        {valid == 'false' ? (
+                        {expired == 'true' ? (
                             <code className={`font-mono bg-zinc-900 rounded py-1 px-2 text-red-500`}>{`Ungültig`}</code>
                         ) : null}
                     </span>
@@ -97,7 +105,7 @@ export default () => {
                         </div>
                     </div>
                     <div className={`ml-4`}>
-                        {valid == 'false' && (
+                        {expired == 'true' && (
                             <a>
                                 <Button onClick={() => setVisible('true')}>Lizenz Erneuern</Button>
                             </a>

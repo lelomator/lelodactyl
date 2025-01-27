@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import FlashMessageRender from '@/components/FlashMessageRender';
 import MainPage from '@/components/elements/MainPage';
 
+import DiscordButton from './DiscordButton';
+
 export interface PageContentBlockProps {
     title?: string;
     className?: string;
@@ -23,6 +25,7 @@ const PageContentBlock: React.FC<PageContentBlockProps> = ({ title, showFlashKey
                 {showFlashKey && <FlashMessageRender byKey={showFlashKey} />}
                 {children}
             </MainPage>
+            <DiscordButton></DiscordButton>
         </>
     );
 };

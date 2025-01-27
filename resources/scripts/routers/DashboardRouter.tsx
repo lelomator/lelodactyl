@@ -19,6 +19,7 @@ import { NotFound } from '@/components/elements/ScreenBlock';
 import HugeIconsApi from '@/components/elements/hugeicons/Api';
 import HugeIconsDashboardSettings from '@/components/elements/hugeicons/DashboardSettings';
 import HugeIconsHome from '@/components/elements/hugeicons/Home';
+import HugeIconsServer from '@/components/elements/hugeicons/Server';
 import HugeIconsSsh from '@/components/elements/hugeicons/Ssh';
 
 import http from '@/api/http';
@@ -49,6 +50,7 @@ export default () => {
     const NavigationSettings = useRef(null);
     const NavigationApi = useRef(null);
     const NavigationSSH = useRef(null);
+    const CreateServer = useRef(null);
 
     const calculateTop = (pathname: string) => {
         // Get currents of navigation refs.
@@ -56,6 +58,7 @@ export default () => {
         const ButtonSettings = NavigationSettings.current;
         const ButtonApi = NavigationApi.current;
         const ButtonSSH = NavigationSSH.current;
+        const ButtonCreate = CreateServer.current;
 
         // Perfectly center the page highlighter with simple math.
         // Height of navigation links (56) minus highlight height (40) equals 16. 16 devided by 2 is 8.
@@ -66,6 +69,8 @@ export default () => {
             return (ButtonSettings as any).offsetTop + HighlightOffset;
         if (pathname.endsWith('/api') && ButtonApi != null) return (ButtonApi as any).offsetTop + HighlightOffset;
         if (pathname.endsWith('/ssh') && ButtonSSH != null) return (ButtonSSH as any).offsetTop + HighlightOffset;
+        if (pathname.endsWith('/create') && ButtonCreate != null)
+            return (ButtonCreate as any).offsetTop + HighlightOffset;
         return '0';
     };
 
@@ -175,6 +180,10 @@ export default () => {
                     <NavLink to={'/account'} end className='flex flex-row items-center' ref={NavigationSettings}>
                         <HugeIconsDashboardSettings fill='currentColor' />
                         <p>Settings</p>
+                    </NavLink>
+                    <NavLink to={'/account/create'} end className='flex flex-row items-center' ref={CreateServer}>
+                        <HugeIconsServer fill='currentColor' />
+                        <p>Server Hinzufügen</p>
                     </NavLink>
                 </ul>
             </MainSidebar>

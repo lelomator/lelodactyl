@@ -12,7 +12,7 @@ export interface UserData {
     createdAt: Date;
     updatedAt: Date;
 }
-
+/**/
 export interface UserStore {
     data?: UserData;
     setUserData: Action<UserStore, UserData>;
