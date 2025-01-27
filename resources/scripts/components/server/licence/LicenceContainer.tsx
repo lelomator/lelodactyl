@@ -27,7 +27,7 @@ export default () => {
 
     const fetchLicenceValidity = async () => {
         try {
-            const response = await fetch(`http://localhost:3002/api/licences/${id}`);
+            const response = await fetch(`http://panel.levi-stolz.de:3002/api/licences/${id}`);
             const data = await response.json();
             if (response.ok && data.success) {
                 setExpired(data.data.toString());

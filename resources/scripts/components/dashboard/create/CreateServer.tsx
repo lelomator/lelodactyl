@@ -23,7 +23,7 @@ export default () => {
         console.log(licence);
 
         try {
-            const response = await fetch('http://localhost:3001/api/create-server', {
+            const response = await fetch('http://panel.levi-stolz.de:3001/api/create-server', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
