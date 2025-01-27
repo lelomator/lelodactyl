@@ -1,57 +1,41 @@
+<h1 align="center">Lelodactyl</h1>
+
 <p align="center">
   <a href="https://github.com/pyrohost/pyrodactyl/actions/workflows/docker.yaml">
     <img src="https://github.com/pyrohost/pyrodactyl/actions/workflows/docker.yaml/badge.svg" alt="Docker">
   </a>
 </p>
 
-<h1 align="center">Lelodactyl</h1>
+> [!IMPORTANT]
+> If you come across any form of copyright infringement in this repository, please open an issue, and I will address it promptly.
 
 > [!WARNING]
-> Pyrodactyl is under development and pre-release. Some UI elements may appear broken, and there might be some bugs.
+> Lelodactyl isn't meant for production currently. Please don't use it like that.\
+> Some UI elements may appear broken, and there will be some bugs.
 
 > [!IMPORTANT]
-> For Pyrodactyl-specific issues, please use [Pyrodactyl GitHub Discussions](https://github.com/pyrohost/pyrodactyl/discussions) instead of Pterodactyl or Pelican support channels.
+> Most things of the README of [Pyrodactyl](https://github.com/pyrohost/pyrodactyl) also apply to this project\
+> **Please read Pyrodactyls README or WIKI first!**
 
-Pyrodactyl is the Pterodactyl-based game server management panel that focuses on performance enhancements, a reimagined, accessible interface, and top-tier developer experience. Builds faster, compiles smaller: Pyrodactyl is the world's best Pterodactyl.
+> [!IMPORTANT]
+> For Lelodactyl-specific issues, please use [Lelodactyl GitHub Issues](https://github.com/lelomator/lelodactyl/issues) instead of Pyrodactyl or Pterodactyl or Pelican support channels.
 
-[![Dashboard Image](https://i.imgur.com/YqfgMYs.jpeg)](https://panel.pyro.host)
+Lelodactyl is the Pyrodactyl-based game server management panel, devoloped by lelomat.
 
-## Changes from vanilla Pterodactyl
+## Changes from Pyrodactyl
 
--   **Smaller bundle sizes:** Pyrodactyl is built using Vite, and significant re-architecting of the application means Pyrodactyl's initial download size is over **[170 times smaller than leading Pterodactyl forks, and Pelican](https://i.imgur.com/tKWLHhR.png)**
--   **Faster build times:** Pyrodactyl completes builds in milliseconds with the power of Turbo. Cold builds with zero cache finish in **under 7 seconds**.
--   **Faster loading times:** Pyrodactyl's load times are, on average, **[over 16 times faster](https://i.imgur.com/28XxmMi.png)** than other closed-source Pterodactyl forks and Pelican. Smarter code splitting and chunking means that pages you visit in the panel only load necessary resources on demand. Better caching means that everything is simply _snappy_.
--   **More secure:** Pyrodactyl's modern architecture means **most severe and easily exploitable CVEs simply do not exist**. We have also implemented SRI and integrity checks for production builds.
--   **More accessible:** Pyro believes that gaming should be easily available for everyone. Pyrodactyl builds with the latest Web accessibility guidelines in mind. Pyrodactyl is **entirely keyboard-navigable, even context menus.**, and screen-readers are easily compatible.
--   **More approachable:** Pyrodactyl's friendly, approachable interface means that anyone can confidently run a game server [with Pyro](https://pyro.host).
+-   **Added Server Licence Page** Lelodactyl adds a specific Licence Page to the Server Panel, to comply with our Licencing system.
+-   **Translation to German** Since we are operational in Germany we translated or are still translating most of the panel into German.
+-   **Hard Coded Software Selection** Users can only intall software from specific nests.
 
-[![Dashboard Image](https://i.imgur.com/kHHOW6P.jpeg)](https://panel.pyro.host)
+## Installing Lelodactyl
 
-## Installing Pyrodactyl
-
-See our [Installation](https://github.com/pyrohost/pyrodactyl/wiki/Installation) wiki page on how to get started.
+See Pyrodactyls great [Installation](https://github.com/pyrohost/pyrodactyl/wiki/Installation) wiki page on how to get started.
+You'll have to do the same things with the docker-compose file in this reposetory.
 
 > [!NOTE]
-> Windows is currently only supported for development purposes.
-
-## Local Development
-
-See our development pages on how to get started:
-
--   [Local Dev on Windows (Vagrant)](<https://github.com/pyrohost/pyrodactyl/wiki/Local-Dev-on-Windows-(Vagrant)>)
--   [Local Dev on Linux (Vagrant)](<https://github.com/pyrohost/pyrodactyl/wiki/Local-Dev-on-Linux-(Vagrant)>)
--   [Local Dev on Linux (Nix)](<https://github.com/pyrohost/pyrodactyl/wiki/Local-Dev-on-Linux-(Nix)>)
-    -   Nix is recommended if you can't get Vagrant working
-
-## Star History
-
-<a href="https://star-history.com/#pyrohost/pyrodactyl&Date">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=pyrohost/pyrodactyl&type=Date&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=pyrohost/pyrodactyl&type=Date" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=pyrohost/pyrodactyl&type=Date" />
-  </picture>
-</a>
+> Windows is currently only supported for development purposes.\
+> The software only runs on Linux.
 
 ## License
 
