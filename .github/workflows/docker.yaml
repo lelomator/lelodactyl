@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - dev
   pull_request:
     branches:
       - main
@@ -49,13 +48,6 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Update version
-        if: "github.event_name == 'release' && github.event.action == 'published'"
-        env:
-          REF: ${{ github.event.release.tag_name }}
-        run: |
-          sed -i "s/    'version' => 'canary',/    'version' => '${REF:1}',/" config/app.php
 
       - name: Build and Push
         uses: docker/build-push-action@v6
