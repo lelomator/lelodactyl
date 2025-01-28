@@ -78,7 +78,7 @@ export default () => {
                     </div>
                     <div className={`mt-3`}>
                         <Button disabled={isSubmitting} type='submit' style={{ marginTop: '0px' }}>
-                            Server Hinzufügen
+                            Server Ertsellen
                         </Button>
                     </div>
                 </form>
