@@ -4,9 +4,9 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2023-06-18T11:45:33+02:00",
+    "exported_at": "2025-01-28T17:52:02+00:00",
     "name": "Vanilla Bedrock",
-    "author": "parker@parkervcp.com",
+    "author": "levi.stolz@web.de",
     "description": "Bedrock Edition ist die Minecraft version, auf welcher du mit deinen Fraunden auf der \"Pocket Edition\", \"Konsolen Editon\", und \"Windows 10 Edition\".",
     "features": [
         "pid_limit"
@@ -15,7 +15,7 @@
         "ghcr.io\/parkervcp\/yolks:debian": "ghcr.io\/parkervcp\/yolks:debian"
     },
     "file_denylist": [],
-    "startup": ".\/bedrock_server",
+    "startup": "LD_LIBRARY_PATH=. .\/bedrock_server",
     "config": {
         "files": "{\r\n    \"server.properties\": {\r\n        \"parser\": \"properties\",\r\n        \"find\": {\r\n            \"server-port\": \"{{server.build.default.port}}\",\r\n            \"server-name\": \"{{server.build.env.SERVERNAME}}\",\r\n            \"gamemode\": \"{{server.build.env.GAMEMODE}}\",\r\n            \"difficulty\": \"{{server.build.env.DIFFICULTY}}\",\r\n            \"allow-cheats\": \"{{server.build.env.CHEATS}}\"\r\n        }\r\n    }\r\n}",
         "startup": "{\r\n    \"done\": \"Server started\"\r\n}",
@@ -24,7 +24,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\n\r\napt update\r\napt install -y zip unzip wget curl\r\n\r\nif [ ! -d \/mnt\/server\/ ]; then\r\n    mkdir \/mnt\/server\/\r\nfi\r\n\r\ncd \/mnt\/server\r\n\r\n# Minecraft CDN Akamai blocks script user-agents\r\nRANDVERSION=$(echo $((1 + $RANDOM % 4000)))\r\n\r\nif [ -z \"${BEDROCK_VERSION}\" ] || [ \"${BEDROCK_VERSION}\" == \"latest\" ]; then\r\n    echo -e \"\\n Downloading latest Bedrock server\"\r\n    curl -L -A \"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/90.0.$RANDVERSION.212 Safari\/537.36\" -H \"Accept-Language: en\" -H \"Accept-Encoding: gzip, deflate\" -o versions.html.gz https:\/\/www.minecraft.net\/en-us\/download\/server\/bedrock\r\n    DOWNLOAD_URL=$(zgrep -o 'https:\/\/minecraft.azureedge.net\/bin-linux\/[^\"]*' versions.html.gz)\r\nelse \r\n    echo -e \"\\n Downloading ${BEDROCK_VERSION} Bedrock server\"\r\n    DOWNLOAD_URL=https:\/\/minecraft.azureedge.net\/bin-linux\/bedrock-server-$BEDROCK_VERSION.zip\r\nfi\r\n\r\nDOWNLOAD_FILE=$(echo ${DOWNLOAD_URL} | cut -d\"\/\" -f5) # Retrieve archive name\r\n\r\necho -e \"backing up config files\"\r\nrm *.bak versions.html.gz\r\ncp server.properties server.properties.bak\r\ncp permissions.json permissions.json.bak\r\ncp allowlist.json allowlist.json.bak\r\n\r\n\r\necho -e \"Downloading files from: $DOWNLOAD_URL\"\r\n\r\ncurl -L -A \"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/90.0.$RANDVERSION.212 Safari\/537.36\" -H \"Accept-Language: en\" -o $DOWNLOAD_FILE $DOWNLOAD_URL\r\n\r\necho -e \"Unpacking server files\"\r\nunzip -o $DOWNLOAD_FILE\r\n\r\necho -e \"Cleaning up after installing\"\r\nrm $DOWNLOAD_FILE\r\n\r\necho -e \"restoring backup config files - on first install there will be file not found errors which you can ignore.\"\r\ncp -rf server.properties.bak server.properties\r\ncp -rf permissions.json.bak permissions.json\r\ncp -rf allowlist.json.bak allowlist.json\r\n\r\nchmod +x bedrock_server\r\n\r\necho -e \"Install Completed\"",
+            "script": "#!\/bin\/ash\r\n# Bedrock Server Installation Script\r\n#\r\n# Server Files: \/mnt\/server\r\n\r\n# Variablen\r\nZIP_NAME=\"bedrock-server.zip\"\r\nDOWNLOAD_URL=\"https:\/\/www.dropbox.com\/scl\/fi\/hncprbeug2a6606wlqfxt\/bedrock-server.zip?rlkey=2i9j66awkpj61hd8mdgc17uae&st=4x5b2ylc&dl=1\"\r\nTARGET_DIR=\"\/mnt\/server\"\r\n\r\n# Sicherstellen, dass das Skript ausf\u00fchrbar ist\r\nif [ ! -x \"$0\" ]; then\r\n    echo \"Das Skript ist nicht ausf\u00fchrbar. Setze Berechtigungen...\"\r\n    chmod +x \"$0\"\r\nfi\r\n\r\n# Wechsle ins Zielverzeichnis\r\ncd \"${TARGET_DIR}\" || { \r\n    echo \"Zielverzeichnis ${TARGET_DIR} nicht gefunden!\"; \r\n    exit 1; \r\n}\r\n\r\n# Alte ZIP-Datei sichern, falls vorhanden\r\nif [ -f \"${ZIP_NAME}\" ]; then\r\n    echo \"Bestehende ZIP-Datei gefunden. Sichere alte Datei...\"\r\n    mv \"${ZIP_NAME}\" \"${ZIP_NAME}.old\"\r\nfi\r\n\r\n# ZIP-Datei herunterladen\r\necho \"Lade Bedrock-Server von ${DOWNLOAD_URL} herunter...\"\r\ncurl -L \"${DOWNLOAD_URL}\" --output \"${ZIP_NAME}\"\r\n\r\n# \u00dcberpr\u00fcfen, ob der Download erfolgreich war\r\nif [ $? -ne 0 ]; then\r\n    echo \"Download fehlgeschlagen. \u00dcberpr\u00fcfen Sie die URL und versuchen Sie es erneut.\"\r\n    exit 1\r\nfi\r\n\r\n# Entpacken der ZIP-Datei\r\necho \"Entpacke die heruntergeladene ZIP-Datei...\"\r\nunzip -o \"${ZIP_NAME}\" -d \"${TARGET_DIR}\"\r\n\r\n# \u00dcberpr\u00fcfen, ob das Entpacken erfolgreich war\r\nif [ $? -ne 0 ]; then\r\n    echo \"Fehler beim Entpacken der ZIP-Datei.\"\r\n    exit 1\r\nfi\r\n\r\n# Entfernen der ZIP-Datei nach erfolgreichem Entpacken\r\nrm \"${ZIP_NAME}\"\r\n\r\n# server.properties herunterladen, falls nicht vorhanden\r\nif [ ! -f server.properties ]; then\r\n    echo \"Lade server.properties herunter...\"\r\n    curl -o server.properties https:\/\/raw.githubusercontent.com\/parkervcp\/eggs\/master\/minecraft\/bedrock\/server.properties\r\nfi\r\n\r\n# Berechtigungen f\u00fcr alle Dateien im Zielverzeichnis setzen\r\necho \"Setze Berechtigungen f\u00fcr alle Dateien im Zielverzeichnis...\"\r\nchmod -R 755 \"${TARGET_DIR}\"\r\n\r\necho \"Bedrock Server Installation abgeschlossen!\"",
             "container": "ghcr.io\/parkervcp\/installers:debian",
             "entrypoint": "bash"
         }
@@ -62,7 +62,7 @@
         },
         {
             "name": "Spielmodus",
-            "description": "Der Spielmodus, der standardmäßig auf deinem Server aktiv sein soll.",
+            "description": "Der Spielmodus, der standardm\u00e4\u00dfig auf deinem Server aktiv sein soll.",
             "env_variable": "GAMEMODE",
             "default_value": "survival",
             "user_viewable": true,
@@ -72,7 +72,7 @@
         },
         {
             "name": "Schwierigkeit",
-            "description": "Die Schwirigkeit, die standardmäßig auf deinem Server aktiv sein soll.",
+            "description": "Die Schwirigkeit, die standardm\u00e4\u00dfig auf deinem Server aktiv sein soll.",
             "env_variable": "DIFFICULTY",
             "default_value": "easy",
             "user_viewable": true,
@@ -82,7 +82,7 @@
         },
         {
             "name": "Cheats Erlauben?",
-            "description": "Wenn aktiviert, können auf deinem Server Befehle und Cheats verwendet werden.",
+            "description": "Wenn aktiviert, k\u00f6nnen auf deinem Server Befehle und Cheats verwendet werden.",
             "env_variable": "CHEATS",
             "default_value": "false",
             "user_viewable": true,
