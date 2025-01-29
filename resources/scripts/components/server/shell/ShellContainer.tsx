@@ -203,6 +203,8 @@ const SoftwareContainer = () => {
         return nests?.find((nest) => nest.attributes.name === name);
     };
 
+    //irgendwas ist falsch hier, bitte fixen!
+
     const handleNestSelect = (nest_name: string) => {
         const nest: Nest = getNestByName(nest_name)!;
         setSelectedNest(nest);
