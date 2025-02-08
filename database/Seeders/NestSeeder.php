@@ -36,7 +36,7 @@ class NestSeeder extends Seeder
      */
     public function run()
     {
-        //Nest::query()->delete();
+        Nest::truncate();
 
         // Auto-Increment zurücksetzen
         //DB::statement('ALTER TABLE nests AUTO_INCREMENT = 1');
