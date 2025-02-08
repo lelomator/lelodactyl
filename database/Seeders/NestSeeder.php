@@ -36,6 +36,11 @@ class NestSeeder extends Seeder
      */
     public function run()
     {
+        Nest::query()->delete();
+
+        // Auto-Increment zurücksetzen
+        DB::statement('ALTER TABLE nests AUTO_INCREMENT = 1');
+
         $items = $this->repository->findWhere([
             'author' => 'support@pterodactyl.io',
         ])->keyBy('name')->toArray();
