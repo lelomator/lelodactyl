@@ -56,7 +56,7 @@ export default () => {
                 <SpinnerOverlay visible={loading} />
                 <Dialog.Confirm
                     title={'API Schlüssel Löschen'}
-                    confirm={'Delete Key'}
+                    confirm={'Löschen'}
                     open={!!deleteIdentifier}
                     onClose={() => setDeleteIdentifier('')}
                     onConfirmed={() => doDeletion(deleteIdentifier)}

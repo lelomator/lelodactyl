@@ -49,12 +49,10 @@ export default ({ onKeyCreated }: { onKeyCreated: (key: ApiKey) => void }) => {
         <>
             {/* Flash Messages */}
             <FlashMessageRender byKey='account' />
-
+            <ApiKeyModal apiKey={apiKey} setApiKey={setApiKey} />
             {/* Modal for API Key */}
-            <ApiKeyModal visible={apiKey.length > 0} onModalDismissed={() => setApiKey('')} apiKey={apiKey} />
-
             {/* Form for creating API key */}
-            <ContentBox title={'Api Key'}>
+            <ContentBox title={'Api Schlüssel'}>
                 <Formik
                     onSubmit={submit}
                     initialValues={{ description: '', allowedIps: '' }}
@@ -70,18 +68,18 @@ export default ({ onKeyCreated }: { onKeyCreated: (key: ApiKey) => void }) => {
 
                             {/* Description Field */}
                             <FormikFieldWrapper
-                                label='Description'
+                                label='Beschreibung'
                                 name='description'
-                                description='A description of this API key.'
+                                description='Eine Beschreibung deinen API Schlüssels.'
                             >
                                 <Field name='description' as={Input} className='w-full' />
                             </FormikFieldWrapper>
 
                             {/* Allowed IPs Field */}
                             <FormikFieldWrapper
-                                label='Allowed IPs'
+                                label='Erlaubte Ips'
                                 name='allowedIps'
-                                description='Leave blank to allow any IP address to use this API key, otherwise provide each IP address on a new line.'
+                                description='Lass das leer, um allen Ips zugriff zu gewähren. Sonst gib Erlaubte Ips in jeweils einer neuen Zeile an.'
                             >
                                 <Field name='allowedIps' as={Input} className='w-full' />
                             </FormikFieldWrapper>
@@ -89,7 +87,7 @@ export default ({ onKeyCreated }: { onKeyCreated: (key: ApiKey) => void }) => {
                             {/* Submit Button below form fields */}
                             <div className='flex justify-end mt-6'>
                                 <Button type='submit' disabled={isSubmitting}>
-                                    {isSubmitting ? 'Creating...' : 'Create API Key'}
+                                    {isSubmitting ? 'Erstellen...' : 'API Schlüssel Erstellen'}
                                 </Button>
                             </div>
                         </Form>
