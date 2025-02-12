@@ -48,20 +48,20 @@ export default () => {
             {/* Flash messages will now appear at the top of the page */}
             <FlashMessageRender byKey='account' />
             <div className='md:flex flex-nowrap my-10 space-x-8'>
-                <ContentBox title={'Create API Key'} className='flex-none w-full md:w-1/1'>
+                <ContentBox title={'API Schlüssel Erstellen'} className='flex-none w-full md:w-1/1'>
                     <CreateApiKeyForm onKeyCreated={(key) => setKeys((s) => [...s!, key])} />
                 </ContentBox>
             </div>
-            <ContentBox title={'API Keys'}>
+            <ContentBox title={'API Schlüssel'}>
                 <SpinnerOverlay visible={loading} />
                 <Dialog.Confirm
-                    title={'Delete API Key'}
+                    title={'API Schlüssel Löschen'}
                     confirm={'Delete Key'}
                     open={!!deleteIdentifier}
                     onClose={() => setDeleteIdentifier('')}
                     onConfirmed={() => doDeletion(deleteIdentifier)}
                 >
-                    All requests using the <Code>{deleteIdentifier}</Code> key will be invalidated.
+                    Alle Anfragen, die den Code <Code>{deleteIdentifier}</Code> nutzen werden Ungültig.
                 </Dialog.Confirm>
 
                 {keys.length === 0 ? (
