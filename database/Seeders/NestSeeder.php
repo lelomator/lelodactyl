@@ -37,7 +37,11 @@ class NestSeeder extends Seeder
      */
     public function run()
     {
+        
+        \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Nest::truncate();
+        \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        
 
         // Auto-Increment zurücksetzen
         //DB::statement('ALTER TABLE nests AUTO_INCREMENT = 1');
