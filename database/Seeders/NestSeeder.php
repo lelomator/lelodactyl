@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Pterodactyl\Models\Nest;
 use Illuminate\Database\Seeder;
 use Pterodactyl\Services\Nests\NestCreationService;
 use Pterodactyl\Contracts\Repository\NestRepositoryInterface;
