@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Pterodactyl\Models\Nest;
 use Pterodactyl\Models\Egg;
+use Pterodactyl\Models\EggVariable;
 use Illuminate\Database\Seeder;
 use Pterodactyl\Services\Nests\NestCreationService;
 use Pterodactyl\Contracts\Repository\NestRepositoryInterface;
@@ -42,6 +43,7 @@ class NestSeeder extends Seeder
         \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         Nest::truncate();
         Egg::truncate();
+        EggVariable::truncate();
         \Illuminate\Support\Facades\DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         
 
