@@ -1,5 +1,6 @@
 // I know it's deprecated! We need to fix it!!!
 import * as Sentry from '@sentry/react';
+import posthog from 'posthog-js';
 import { createRoot } from 'react-dom/client';
 
 import App from '@/components/App';
@@ -11,7 +12,12 @@ Sentry.init({
     integrations: [],
 });
 
+posthog.init(import.meta.env.VITE_POSTHOG_API_KEY, {
+    api_host: import.meta.env.VITE_POSTHOG_API_HOST,
+});
+
 const container = document.getElementById('app');
+
 if (container) {
     const root = createRoot(container);
     root.render(<App />);

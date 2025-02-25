@@ -1,6 +1,7 @@
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { format } from 'date-fns';
+import posthog from 'posthog-js';
 import { useEffect, useState } from 'react';
 
 import FlashMessageRender from '@/components/FlashMessageRender';
