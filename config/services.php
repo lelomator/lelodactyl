@@ -33,4 +33,9 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+
+    'posthog' => [
+        'api_key' => env('VITE_POSTHOG_API_KEY'),
+        'api_host' => env('VITE_POSTHOG_API_HOST'),
+    ],
 ];
