@@ -13,11 +13,10 @@ Sentry.init({
 });
 
 posthog.init(import.meta.env.VITE_POSTHOG_API_KEY, {
-    api_host: import.meta.env.VITE_POSTHOG_API_HOST,
+    api_host: 'https://eu.i.posthog.com',
 });
 
 console.log(import.meta.env.VITE_POSTHOG_API_KEY);
-console.log(import.meta.env.VITE_POSTHOG_API_HOST);
 
 const container = document.getElementById('app');
 
