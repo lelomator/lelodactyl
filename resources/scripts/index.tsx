@@ -12,14 +12,11 @@ Sentry.init({
     integrations: [],
 });
 
-posthog.init(import.meta.env.VITE_POSTHOG_API_KEY, {
+const posthogApiKey = (window as unknown as { posthogApiKey?: string }).posthogApiKey || '';
+
+posthog.init(posthogApiKey, {
     api_host: 'https://eu.i.posthog.com',
 });
-
-const posthogApiKey = (window as unknown as { posthogApiKey?: string }).posthogApiKey || '';
-console.log('PostHog API Key:', posthogApiKey);
-
-console.log(import.meta.env.VITE_POSTHOG_API_KEY);
 
 const container = document.getElementById('app');
 
