@@ -12,12 +12,12 @@ Sentry.init({
     integrations: [],
 });
 
-const posthog_api = (window as unknown as { posthog_api?: string }).posthog_api || '';
-const posthog_url = (window as unknown as { posthog_url?: string }).posthog_url || '';
-
-posthog.init(posthog_api, {
-    api_host: posthog_url,
-});
+//const posthog_api = (window as unknown as { posthog_api?: string }).posthog_api || '';
+//const posthog_url = (window as unknown as { posthog_url?: string }).posthog_url || '';
+//
+//posthog.init(posthog_api, {
+//    api_host: posthog_url,
+//});
 
 const container = document.getElementById('app');
 
