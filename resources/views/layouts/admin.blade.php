@@ -17,6 +17,7 @@
         <meta name="theme-color" content="#000000">
 
         @include('layouts.scripts')
+        @include('admin.layouts.scripts')
 
         @section('scripts')
             {!! Theme::css('vendor/select2/select2.min.css?t={cache-version}') !!}
