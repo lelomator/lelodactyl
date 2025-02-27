@@ -16,6 +16,6 @@ return [
     */
 
     'posthog_api' => env('VITE_POSTHOG_API_KEY', 'none'),
-    /*'posthog_url' => env('VITE_POSTHOG_URL', 'none'),'*/
+    'posthog_url' => env('VITE_POSTHOG_URL', 'none'),
 
 ];
