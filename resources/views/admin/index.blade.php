@@ -24,7 +24,10 @@
                     You are running Lelodactyl panel version <code>{{ config('app.version') }}</code>.
             </div>
             <div class="box-body">
-                    Your PostHog Api Key is <code>{{ config('lelodactyl.posthog_api') }}</code>.
+                    Your PostHog Api Key is <code>{{ config('lelodactyl.posthog_api') }}</code> with the URL <code>{{ config('lelodactyl.posthog_url') }}</code>.
+            </div>
+            <div class="box-body">
+                    Your Configured Backend URL is <code>{{ config('lelodactyl.backend_url') }}</code> .
             </div>
             <div class="box-body">
                     Lelodactyl is a Pyrodactyl Fork, you can find the Original Project here:

@@ -31,7 +31,8 @@ const DisableTOTPDialog = ({ onLicenceRenewed }) => {
         }
 
         try {
-            const response = await fetch(`http://panel.levi-stolz.de:3002/api/reaktivate`, {
+            const backend_url = (window as unknown as { backend_url?: string }).backend_url || '';
+            const response = await fetch(`${backend_url}/api/reaktivate`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

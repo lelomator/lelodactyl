@@ -24,8 +24,10 @@ export default () => {
 
         console.log(licence);
 
+        const backend_url = (window as unknown as { backend_url?: string }).backend_url || '';
+
         try {
-            const response = await fetch('http://panel.levi-stolz.de:3001/api/create-server', {
+            const response = await fetch(`${backend_url}/api/create-server`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
