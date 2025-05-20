@@ -14,7 +14,8 @@ on:
         types:
             - published
 permissions:
-    packages: write
+  contents: read
+  packages: write
 
 jobs:
     push:
