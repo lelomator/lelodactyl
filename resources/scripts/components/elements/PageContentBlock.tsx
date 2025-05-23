@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 import FlashMessageRender from '@/components/FlashMessageRender';
 import MainPage from '@/components/elements/MainPage';
+import BetaLabel from './BetaLabel';
 
 export interface PageContentBlockProps {
     title?: string;
@@ -13,7 +14,7 @@ export interface PageContentBlockProps {
 const PageContentBlock: React.FC<PageContentBlockProps> = ({ title, showFlashKey, className, children }) => {
     useEffect(() => {
         if (title) {
-            document.title = title + ' | Pyrodactyl';
+            document.title = title + ' | Lelodactyl';
         }
     }, [title]);
 
@@ -23,6 +24,7 @@ const PageContentBlock: React.FC<PageContentBlockProps> = ({ title, showFlashKey
                 {showFlashKey && <FlashMessageRender byKey={showFlashKey} />}
                 {children}
             </MainPage>
+            <BetaLabel />
         </>
     );
 };
