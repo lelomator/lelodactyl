@@ -1,20 +1,10 @@
-import React from 'react';
-
 import { Button } from '@/components/elements/button/index';
 
-const DiscordButton = ({ }) => {
+const DiscordButton = () => {
     const logoStyle = {
         width: '30px',
         height: '30px',
         marginRight: '10px',
-    };
-
-    const buttonStyle = {
-        position: 'fixed',
-        bottom: '20px',
-        right: '20px',
-        padding: '10px 20px',
-        border: 'none',
     };
 
     function openNewPage() {
@@ -25,7 +15,14 @@ const DiscordButton = ({ }) => {
         <Button
             rel='noopener noreferrer'
             onClick={openNewPage}
-            style={{ position: 'fixed', bottom: '20px', right: '20px', padding: '10px 20px', border: 'none', borderRadius: '30px' }}
+            style={{
+                position: 'fixed',
+                bottom: '20px',
+                right: '20px',
+                padding: '10px 20px',
+                border: 'none',
+                borderRadius: '30px',
+            }}
         >
             <img src='https://www.svgrepo.com/download/335411/important.svg' alt='Alert' style={logoStyle} />
             Beta Version

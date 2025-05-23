@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 import FlashMessageRender from '@/components/FlashMessageRender';
 import MainPage from '@/components/elements/MainPage';
+
 import BetaLabel from './BetaLabel';
 
 export interface PageContentBlockProps {
