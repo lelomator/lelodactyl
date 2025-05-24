@@ -12,10 +12,12 @@ export interface PageContentBlockProps {
     children?: React.ReactNode;
 }
 
+const app_name = (window as unknown as { app_name?: string }).app_name || '';
+
 const PageContentBlock: React.FC<PageContentBlockProps> = ({ title, showFlashKey, className, children }) => {
     useEffect(() => {
         if (title) {
-            document.title = title + ' | Lelodactyl';
+            document.title = title + ' | ' + app_name;
         }
     }, [title]);
 
