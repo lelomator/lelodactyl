@@ -542,18 +542,21 @@ export default () => {
                                                 <p>Settings</p>
                                             </NavLink>
                                         </Can>
-                                        <Can action={['activity.*', 'activity.read']} matchAny>
-                                            <NavLink
-                                                className='flex flex-row items-center transition-colors duration-200 hover:bg-[#ffffff11] rounded-md'
-                                                ref={NavigationActivity}
-                                                to={`/server/${id}/activity`}
-                                                onClick={toggleSidebar}
-                                                end
-                                            >
-                                                <HugeIconsPencil fill='currentColor' />
-                                                <p>Activity</p>
-                                            </NavLink>
-                                        </Can>
+                                        {rootAdmin && (
+                                            <Can action={['activity.*', 'activity.read']} matchAny>
+                                                <NavLink
+                                                    className='flex flex-row items-center transition-colors duration-200 hover:bg-[#ffffff11] rounded-md'
+                                                    ref={NavigationActivity}
+                                                    to={`/server/${id}/activity`}
+                                                    onClick={toggleSidebar}
+                                                    end
+                                                >
+                                                    <HugeIconsPencil fill='currentColor' />
+                                                    <p>Activity</p>
+                                                </NavLink>
+                                            </Can>
+                                        )}
+
                                         {/* TODO: finish modrinth support *\}
                     {/* <Can action={['modrinth.*', 'modrinth.download']} matchAny>
                         <NavLink

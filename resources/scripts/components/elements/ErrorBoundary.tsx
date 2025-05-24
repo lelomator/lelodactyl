@@ -1,10 +1,14 @@
-import { Component } from 'react';
+import { Component, ReactNode } from 'react';
 
 interface State {
     hasError: boolean;
 }
 
-class ErrorBoundary extends Component<Record<string, never>, State> {
+interface ErrorBoundaryProps {
+    children: ReactNode; // Erlaubt beliebige React-Elemente als Kinder
+}
+
+class ErrorBoundary extends Component<ErrorBoundaryProps, State> {
     override state: State = {
         hasError: false,
     };
@@ -27,7 +31,7 @@ class ErrorBoundary extends Component<Record<string, never>, State> {
                 </div>
             </div>
         ) : (
-            (this.props as { children: React.ReactNode }).children
+            this.props.children // Hier wird jetzt korrekt auf children zugegriffen
         );
     }
 }

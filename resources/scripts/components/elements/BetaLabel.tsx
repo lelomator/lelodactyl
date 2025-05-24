@@ -1,6 +1,10 @@
 import { useState } from 'react';
+
 import { Button } from '@/components/elements/button/index';
-import { Dialog } from './dialog'; // Dein Custom-Dialog-Component importieren
+
+import { Dialog } from './dialog';
+
+// Dein Custom-Dialog-Component importieren
 
 const DiscordButton = () => {
     const [openDialog, setOpenDialog] = useState(false);
@@ -30,7 +34,7 @@ const DiscordButton = () => {
     return (
         <>
             <Button
-                rel="noopener noreferrer"
+                rel='noopener noreferrer'
                 onClick={handleClickOpen} // Öffnet den Dialog
                 style={{
                     position: 'fixed',
@@ -41,11 +45,7 @@ const DiscordButton = () => {
                     borderRadius: '30px',
                 }}
             >
-                <img
-                    src="https://www.svgrepo.com/download/335411/important.svg"
-                    alt="Alert"
-                    style={logoStyle}
-                />
+                <img src='https://www.svgrepo.com/download/335411/important.svg' alt='Alert' style={logoStyle} />
                 Beta Version
             </Button>
 
@@ -54,8 +54,8 @@ const DiscordButton = () => {
                 open={openDialog}
                 onClose={handleCloseDialog} // Schließt den Dialog
                 //onConfirmed={handleConfirm} // Führt die Aktion bei Bestätigung aus
-                title="Beta Version"
-                description="Da dieser Hosting Anbieter im moment noch in der Beta Version ist, können regelmäßig Fehler auftreten und die Webseite kann sich auch noch verändern."
+                title='Beta Version'
+                description='Da dieser Hosting Anbieter im moment noch in der Beta Version ist, können regelmäßig Fehler auftreten und die Webseite kann sich auch noch verändern.'
             >
                 {/*  <br />
                 <p>Falls du Auf unseren Support Server beitreten möchtest, klicke auf 'Beitreten'.</p> */}
